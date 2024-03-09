@@ -26,7 +26,8 @@ void test_get()
 {
     cpr::Response r = cpr::Get(cpr::Url{"https://api.github.com/repos/libcpr/cpr/contributors"},
                                cpr::Authentication{"user", "pass", cpr::AuthMode::BASIC},
-                               cpr::Parameters{{"anon", "true"}, {"key", "value"}});
+                               cpr::Parameters{{"anon", "true"}, {"key", "value"}},
+                               cpr::Timeout(std::chrono::seconds(1)));
     std::cout << r.status_code << std::endl;                  // 200
     std::cout << r.header["content-type"] << std::endl;       // application/json; charset=utf-8
     std::cout << r.text << std::endl;
