@@ -1,11 +1,20 @@
 #include <iostream>
 #include <cpr/cpr.h>
+#include <filesystem>
 
 void test_get();
 void test_post1();
 void test_post2();
 
-int main() {
+int main(int argc, char** argv) {
+    auto currentPath = std::filesystem::current_path();
+    auto curlDll = currentPath.concat("\\libcurl-d.dll");
+    auto exist = std::filesystem::exists(curlDll);
+    if (exist)
+    {
+
+    }
+
     test_get();
     test_post1();
     test_post2();
